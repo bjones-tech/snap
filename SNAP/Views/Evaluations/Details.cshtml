@@ -1,0 +1,125 @@
+﻿@model SNAP.Models.Persistent.Candidate
+
+@{
+    ViewBag.Title = "Candidate Details";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<hr />
+
+<div class="row">
+    <div class="form-horizontal">
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Number, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Number, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ManagersName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ManagersName, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.RecruitersName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.RecruitersName, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="form-group">
+            @Html.Label("Resume", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.ActionLink("Download", "DownloadResume", new { id = Model.ID }, new { @class = "btn btn-default btn-sm" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Library Of Questions", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.ActionLink("Download", "DownloadLibraryOfQuestions", null, new { @class = "btn btn-default btn-sm" })
+            </div>
+        </div>
+
+        <hr />
+    </div>
+</div>
+
+<h2>Interviews</h2>
+
+<br />
+
+<div class="row">
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Interviews[0].Interviewer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Interviews[0].Organizer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Interviews[0].InterviewDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Interviews[0].EvaluationStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Interviews[0].Recommendation)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model.Interviews)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InterviewersName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OrganizersName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InterviewDate)
+                </td>
+                <td class="@item.EvaluationStatusStyle status-border-left">
+                    @Html.DisplayFor(modelItem => item.EvaluationStatus)
+                </td>
+                <td class="@item.RecommendationStyle status-border-left">
+                    @Html.DisplayFor(modelItem => item.Recommendation)
+                </td>
+                <td>
+                    @Html.ActionLink("Schedule", "Schedule", new { id = item.ID }, new { @class = "btn btn-info" })
+                    @Html.ActionLink("Evaluation", "Evaluation", new { id = item.ID }, new { @class = "btn btn-info" })
+                </td>
+            </tr>
+        }
+
+        <tr>
+            <td style="border-top: 0">
+                @Html.ActionLink("Add Interviewer", "AddInterview", new { id = Model.ID }, new { @class = "btn btn-default btn-sm" })
+            </td>
+        </tr>
+
+    </table>
+</div>

@@ -1,0 +1,156 @@
+﻿@model SNAP.Models.Mail.LastDayNotice
+
+@{
+    Layout = "_MailLayout.cshtml";
+    ViewBag.Banner = "cid:AIS_Banner";
+    ViewBag.Heading = Model.Heading;
+}
+
+<tr>
+    <td align="center" valign="top">
+        <table border="0" cellpadding="0" cellspacing="0" width="600" id="templateBody">
+            <tr>
+                <td valign="top">
+                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                        <tr>
+                            <td valign="top" style="padding-top:20px; padding-bottom:20px;">
+                                <table border="0" cellpadding="10" cellspacing="0" width="100%" class="templateDataTable">
+                                    <tr>
+                                        <th scope="col" valign="top" width="25%" class="dataTableHeading" mc:edit="data_table_heading00">
+                                            @Html.DisplayNameFor(model => model.Name)
+                                        </th>
+                                        <td valign="top" class="dataTableContent" mc:edit="data_table_content01">
+                                            @Model.Name
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="col" valign="top" width="25%" class="dataTableHeading" mc:edit="data_table_heading00">
+                                            @Html.DisplayNameFor(model => model.Type)
+                                        </th>
+                                        <td valign="top" class="dataTableContent" mc:edit="data_table_content01">
+                                            @Model.Type
+                                        </td>
+                                    </tr>
+
+                                    @if (!String.IsNullOrWhiteSpace(Model.Code))
+                                    {
+                                        <tr>
+                                            <th scope="col" valign="top" width="25%" class="dataTableHeading" mc:edit="data_table_heading00">
+                                                @Html.DisplayNameFor(model => model.Code)
+                                            </th>
+                                            <td valign="top" class="dataTableContent" mc:edit="data_table_content01">
+                                                @Model.Code
+                                            </td>
+                                        </tr>
+                                    }
+
+                                    @if (!String.IsNullOrWhiteSpace(Model.StartDate))
+                                    {
+                                        <tr>
+                                            <th scope="col" valign="top" width="25%" class="dataTableHeading" mc:edit="data_table_heading00">
+                                                @Html.DisplayNameFor(model => model.StartDate)
+                                            </th>
+                                            <td valign="top" class="dataTableContent" mc:edit="data_table_content01">
+                                                @Model.StartDate
+                                            </td>
+                                        </tr>
+                                    }
+
+                                    <tr>
+                                        <th scope="col" valign="top" width="25%" class="dataTableHeading" mc:edit="data_table_heading00">
+                                            @Html.DisplayNameFor(model => model.EndDate)
+                                        </th>
+                                        <td valign="top" class="dataTableContent" mc:edit="data_table_content01">
+                                            @Model.EndDate
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <th scope="col" valign="top" width="25%" class="dataTableHeading" mc:edit="data_table_heading00">
+                                            @Html.DisplayNameFor(model => model.Title)
+                                        </th>
+                                        <td valign="top" class="dataTableContent" mc:edit="data_table_content01">
+                                            @Model.Title
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="col" valign="top" width="25%" class="dataTableHeading" mc:edit="data_table_heading00">
+                                            @Html.DisplayNameFor(model => model.Department)
+                                        </th>
+                                        <td valign="top" class="dataTableContent" mc:edit="data_table_content01">
+                                            @Model.Department
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="col" valign="top" width="25%" class="dataTableHeading" mc:edit="data_table_heading00">
+                                            @Html.DisplayNameFor(model => model.Manager)
+                                        </th>
+                                        <td valign="top" class="dataTableContent" mc:edit="data_table_content01">
+                                            @Model.Manager
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="col" valign="top" width="25%" class="dataTableHeading" mc:edit="data_table_heading00">
+                                            @Html.DisplayNameFor(model => model.Office)
+                                        </th>
+                                        <td valign="top" class="dataTableContent" mc:edit="data_table_content01">
+                                            @Model.Office
+                                        </td>
+                                    </tr>
+
+                                    @if (!String.IsNullOrWhiteSpace(Model.Notes))
+                                    {
+                                        <tr>
+                                            <th scope="col" valign="top" width="25%" class="dataTableHeading" mc:edit="data_table_heading00">
+                                                @Html.DisplayNameFor(model => model.Notes)
+                                            </th>
+                                            <td valign="top" class="dataTableContent" mc:edit="data_table_content01">
+                                                @Model.Notes
+                                            </td>
+                                        </tr>
+                                    }
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </td>
+</tr>
+
+@if (Model.Heading.Contains("Cancel") == false)
+{
+    <tr>
+        <td align="center" valign="top">
+            <table border="0" cellpadding="0" cellspacing="0" width="600" id="templateBody">
+                <tr>
+                    <td valign="top">
+                        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                            <tr>
+                                <td valign="top" class="bodyContent">
+                                    <div mc:edit="std_content00">
+                                        <br />
+                                        <strong>Manager:</strong> Please collect company owned equipment including but not limited to computers and related equipment, access cards, keys, FOB, test equipment, etc.
+                                    </div>
+                                    <div mc:edit="std_content00">
+                                        <br />
+                                        <strong>IT:</strong> Please cancel network and email access on the date stipulated above and forward all email to the manager.  Please also cancel voicemail and forward all voicemail to the manager.
+                                    </div>
+                                    <div mc:edit="std_content00">
+                                        <br />
+                                        <strong>Reception:</strong> Please direct all future incoming calls and mail for the above individual to the manager after the last day.
+                                    </div>
+                                    <div mc:edit="std_content00">
+                                        <br />
+                                        <strong>Applications Administrators:</strong> Please shut down access on the date stipulated above.
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+}

@@ -1,0 +1,34 @@
+﻿@model IEnumerable<SNAP.Models.Helpers.O365Profile>
+
+<h4>License Profiles</h4>
+
+<br />
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-3">
+            <table class="table">
+                <tr class="bg-primary">
+                    <th>@item.ShortName</th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <td>@Html.DisplayNameFor(model => model.License)</td>
+                    <td>@item.License</td>
+                </tr>
+                <tr class="bg-primary">
+                    <th>@Html.DisplayNameFor(model => model.Features)</th>
+                    <th></th>
+                </tr>
+            </table>
+
+            <ul style="padding-left: 15px">
+                @foreach (var feature in item.Features)
+                {
+                    <li>@feature.Name</li>
+                }
+            </ul>
+        </div>
+    }
+</div>

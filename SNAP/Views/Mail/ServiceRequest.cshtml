@@ -1,0 +1,33 @@
+﻿@model SNAP.Models.Mail.ServiceRequest
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<body>
+    <p>
+        @Html.DisplayNameFor(model => model.Name): @Model.Name
+    </p>
+    <p>
+        @Html.DisplayNameFor(model => model.Title): @Model.Title
+    </p>
+    <p>
+        @Html.DisplayNameFor(model => model.Department): @Model.Department
+    </p>
+    <p>
+        @Html.DisplayNameFor(model => model.Manager): @Model.Manager
+    </p>
+    <p>
+        @Html.DisplayNameFor(model => model.Office): @Model.Office
+    </p>
+
+    @if (!String.IsNullOrWhiteSpace(Model.Notes))
+    {
+        <p>
+            @Html.DisplayNameFor(model => model.Notes):<br /> @Html.Raw(Model.Notes.Replace("\n", "<br />"))
+        </p>
+    }
+</body>
+</html> 

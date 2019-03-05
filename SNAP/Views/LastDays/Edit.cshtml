@@ -1,0 +1,192 @@
+﻿@model SNAP.Models.Persistent.LastDay
+@using SNAP.Models.Helpers
+
+@{
+    ViewBag.Title = "Update Last Day";
+    ViewBag.Heading = Model.Name;
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.ID)
+    @Html.HiddenFor(model => model.EmailAddress)
+    @Html.HiddenFor(model => model.IsContingent)
+    @Html.HiddenFor(model => model.StartDate)
+    @Html.HiddenFor(model => model.Manager)
+    @Html.HiddenFor(model => model.Country)
+    @Html.HiddenFor(model => model.PrivateNotes)
+    @Html.HiddenFor(model => model.Requester)
+    @Html.HiddenFor(model => model.RequestersEmail)
+    @Html.HiddenFor(model => model.RequestedOn)
+    @Html.HiddenFor(model => model.GUID)
+    @Html.HiddenFor(model => model.Decommissioned)
+    @Html.HiddenFor(model => model.ServiceRequest)
+    @Html.HiddenFor(model => model.Complete)
+    @Html.HiddenFor(model => model.ErrorLog)
+
+    <div class="form-horizontal">
+        <h4>@ViewBag.Heading</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.ValidationMessage("MailNotice", "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                @Html.HiddenFor(model => model.Name)
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @if (!String.IsNullOrWhiteSpace(Model.WorkerID))
+        {
+            <div class="form-group">
+                @Html.LabelFor(model => model.WorkerID, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.WorkerID, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                    @Html.HiddenFor(model => model.WorkerID)
+                    @Html.ValidationMessageFor(model => model.WorkerID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        }
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.WorkerType, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.WorkerType, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                @Html.HiddenFor(model => model.WorkerType)
+                @Html.ValidationMessageFor(model => model.WorkerType, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EndDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="input-group">
+                    @DatePicker.Label("EndDate")
+                    @Html.TextBoxFor(model => model.EndDate, "{0:MMMM dd, yyyy}", new { @class = "form-control end-date-picker" })
+                </div>
+                @Html.ValidationMessageFor(model => model.EndDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <label class="checkbox">
+                    @Html.CheckBoxFor(model => model.Immediate, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.DisplayNameFor(model => model.Immediate)
+                </label>
+            </div>
+        </div>
+
+        @if (!String.IsNullOrWhiteSpace(Model.WorkerID))
+        {
+            <div class="form-group">
+                @Html.LabelFor(model => model.Code, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Code, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Code, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        }
+
+        <hr />
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Department, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Department, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Department, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ManagersEmail, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ManagersEmail, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ManagersEmail, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Office, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Office, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                @Html.HiddenFor(model => model.Office)
+                @Html.ValidationMessageFor(model => model.Office, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PublicNotes, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PublicNotes, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PublicNotes, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @if (Model.ServiceRequest == false)
+        {
+            <div class="form-group">
+                @Html.LabelFor(model => model.PrivateNotes, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.PrivateNotes, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.PrivateNotes, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        }
+        else
+        {
+            @Html.HiddenFor(model => model.PrivateNotes)
+        }
+
+        <hr />
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <label class="checkbox">
+                    @Html.CheckBoxFor(model => model.Suppress, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.DisplayNameFor(model => model.Suppress)
+                </label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <label class="checkbox">
+                    @Html.CheckBoxFor(model => model.ITaaS, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.DisplayNameFor(model => model.ITaaS)
+                </label>
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Update" class="btn btn-primary overlay-click" />
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/snap-lastday")
+    @Scripts.Render("~/bundles/snap-emailaddress")
+}

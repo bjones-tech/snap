@@ -1,0 +1,44 @@
+﻿@model IEnumerable<SNAP.Models.Helpers.Computer>
+
+@{
+    ViewBag.Title = "Windows Workstations";
+    ViewBag.Heading = "Discovered by SCCM";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<h4>@ViewBag.Heading</h4>
+
+<hr />
+
+@using (Html.BeginForm("WindowsWorkstations", "Reports", FormMethod.Get))
+{
+    <div class="form-inline">
+        <div class="form-group">
+            @Html.Editor("Hostname", new { htmlAttributes = new { @class = "form-control", placeholder = "Hostname" } })
+        </div>
+        <div class="form-group">
+            @Html.Editor("Username", new { htmlAttributes = new { @class = "form-control", placeholder = "Username" } })
+        </div>
+        <div class="form-group">
+            @Html.Editor("SerialNumber", new { htmlAttributes = new { @class = "form-control", placeholder = "Serial Number" } })
+        </div>
+    </div>
+
+    <br />
+
+    <div class="form-inline">
+        <div class="form-group">
+            <button type="button" class="btn btn-primary click-submit">Filter</button>
+        </div>
+        <div class="form-group">
+            @Html.ActionLink("Reset", "WindowsWorkstations", null, new { @class = "btn btn-default" })
+        </div>
+    </div>
+}
+
+<br />
+
+<div id="ajaxPartial">
+    @Html.Partial("_WindowsWorkstationsPartial", Model)
+</div>

@@ -1,0 +1,105 @@
+﻿@model SNAP.Models.Persistent.LastDay
+
+@{
+    ViewBag.Title = "Fix Last Day";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.ID)
+    @Html.HiddenFor(model => model.EmailAddress)
+    @Html.HiddenFor(model => model.Name)
+    @Html.HiddenFor(model => model.WorkerID)
+    @Html.HiddenFor(model => model.WorkerType)
+    @Html.HiddenFor(model => model.IsContingent)
+    @Html.HiddenFor(model => model.EndDate)
+    @Html.HiddenFor(model => model.StartDate)
+    @Html.HiddenFor(model => model.Code)
+    @Html.HiddenFor(model => model.Title)
+    @Html.HiddenFor(model => model.Department)
+    @Html.HiddenFor(model => model.Manager)
+    @Html.HiddenFor(model => model.ManagersEmail)
+    @Html.HiddenFor(model => model.Office)
+    @Html.HiddenFor(model => model.Country)
+    @Html.HiddenFor(model => model.Immediate)
+    @Html.HiddenFor(model => model.PublicNotes)
+    @Html.HiddenFor(model => model.PrivateNotes)
+    @Html.HiddenFor(model => model.Requester)
+    @Html.HiddenFor(model => model.RequestersEmail)
+    @Html.HiddenFor(model => model.RequestedOn)
+
+    <div class="form-horizontal">
+        <h4>@ViewBag.Heading</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EmailAddress, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.EmailAddress, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                @Html.HiddenFor(model => model.EmailAddress)
+                @Html.ValidationMessageFor(model => model.EmailAddress, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ErrorLog, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ErrorLog, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                @Html.HiddenFor(model => model.ErrorLog)
+                @Html.ValidationMessageFor(model => model.ErrorLog, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.GUID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.GUID, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                @Html.HiddenFor(model => model.GUID)
+                @Html.ValidationMessageFor(model => model.GUID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Decommissioned, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Decommissioned, new { @class = "form-control", disabled = "disabled" })
+                @Html.HiddenFor(model => model.Decommissioned)
+                @Html.ValidationMessageFor(model => model.Decommissioned, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ServiceRequest, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.ServiceRequest, new { @class = "form-control", disabled = "disabled" })
+                @Html.HiddenFor(model => model.ServiceRequest)
+                @Html.ValidationMessageFor(model => model.ServiceRequest, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Complete, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.CheckBoxFor(model => model.Complete, new { @class = "form-control" })
+                @Html.HiddenFor(model => model.Complete)
+                @Html.ValidationMessageFor(model => model.Complete, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save & Clear Error" class="btn btn-primary overlay-click" />
+            </div>
+        </div>
+    </div>
+}

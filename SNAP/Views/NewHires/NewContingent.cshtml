@@ -1,0 +1,179 @@
+﻿@model SNAP.Models.Persistent.NewHire
+@using SNAP.Models.Helpers
+
+@{
+    ViewBag.Title = "New Contingent";
+    ViewBag.Heading = null;
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.WorkerType)
+    @Html.HiddenFor(model => model.IsContingent)
+    @Html.HiddenFor(model => model.HireType)
+    @Html.HiddenFor(model => model.Department)
+    @Html.HiddenFor(model => model.ServiceDate)
+
+    <div class="form-horizontal">
+        <h4>@ViewBag.Heading</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.ValidationMessage("MailNotice", "", new { @class = "text-danger" })
+        @Html.ValidationMessage("Request", "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.StartDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="input-group">
+                    @DatePicker.Label("StartDate")
+                    @Html.TextBoxFor(model => model.StartDate, "{0:MMMM dd, yyyy}", new { @class = "form-control start-date-picker" })
+                </div>
+                @Html.ValidationMessageFor(model => model.StartDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EndDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="input-group">
+                    @DatePicker.Label("EndDate")
+                    @Html.TextBoxFor(model => model.EndDate, "{0:MMMM dd, yyyy}", new { @class = "form-control end-date-picker" })
+                </div>
+                @Html.ValidationMessageFor(model => model.EndDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-3">
+                <label class="checkbox">
+                    @Html.CheckBoxFor(model => model.Rehire, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.DisplayNameFor(model => model.Rehire)
+                </label>
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ManagersEmail, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ManagersEmail, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ManagersEmail, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Country, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Country, new SelectList(ViewBag.Countries, Model.Country), new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Country, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Office, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Office, new SelectList(ViewBag.Offices, Model.Office), new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Office, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.State, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.State, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.State, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.O365License, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.O365License, new SelectList(ViewBag.O365Profiles, "Value", "Key", Model.O365License), new { @class = "form-control inline-element" })
+                <span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-html="true" data-placement="right" title="@ViewBag.O365ProfileDetails"></span><br />
+                @Html.ValidationMessageFor(model => model.O365License, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        
+        @Html.HiddenFor(model => model.ComputerRequired)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PhoneRequired, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <label class="checkbox">
+                    @Html.CheckBoxFor(model => model.PhoneRequired, new { htmlAttributes = new { @class = "form-control" } })
+                </label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.OracleRequired, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <label class="checkbox">
+                    @Html.CheckBoxFor(model => model.OracleRequired, new { htmlAttributes = new { @class = "form-control" } })
+                </label>
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PublicNotes, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PublicNotes, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PublicNotes, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PrivateNotes, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PrivateNotes, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PrivateNotes, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Submit" class="btn btn-primary overlay-click" />
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/snap-newhire")
+    @Scripts.Render("~/bundles/snap-licenses")
+    @Scripts.Render("~/bundles/snap-emailaddress")
+}

@@ -1,0 +1,161 @@
+﻿@model SNAP.Models.Persistent.CandidateInterview
+
+@{
+    ViewBag.Title = "Interview Evaluation";
+    ViewBag.Heading = null;
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.ID)
+    @Html.HiddenFor(model => model.CandidateID)
+    @Html.HiddenFor(model => model.Interviewer)
+    @Html.HiddenFor(model => model.InterviewersEmail)
+    @Html.HiddenFor(model => model.InterviewDate)
+    @Html.HiddenFor(model => model.InterviewType)
+    @Html.HiddenFor(model => model.Organizer)
+    @Html.HiddenFor(model => model.OrganizersName)
+    @Html.HiddenFor(model => model.OrganizersEmail)
+    @Html.HiddenFor(model => model.AppointmentID)
+    @Html.HiddenFor(model => model.Notes)
+    @Html.HiddenFor(model => model.Complete)
+
+    <div class="form-horizontal">
+        <h4>@ViewBag.Heading</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.ValidationMessage("MailNotice", "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Candidate.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Candidate.Name, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                @Html.ValidationMessageFor(model => model.Candidate.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.InterviewersName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.InterviewersName, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                @Html.HiddenFor(model => model.InterviewersName)
+                @Html.ValidationMessageFor(model => model.InterviewersName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.GeneralAppraisal, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.GeneralAppraisal, new SelectList(ViewBag.Grades, Model.GeneralAppraisal), "Please Select", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.GeneralAppraisal, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TechKnowledge, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.TechKnowledge, new SelectList(ViewBag.OptionalGrades, Model.TechKnowledge), new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.TechKnowledge, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ProblemSolving, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.ProblemSolving, new SelectList(ViewBag.OptionalGrades, Model.ProblemSolving), new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ProblemSolving, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Teamwork, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Teamwork, new SelectList(ViewBag.OptionalGrades, Model.Teamwork), new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Teamwork, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Communication, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Communication, new SelectList(ViewBag.OptionalGrades, Model.Communication), new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Communication, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CulturalFit, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.CulturalFit, new SelectList(ViewBag.OptionalGrades, Model.CulturalFit), new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.CulturalFit, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Leadership, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Leadership, new SelectList(ViewBag.OptionalGrades, Model.Leadership), new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Leadership, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.OverallStrengths, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.OverallStrengths, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.OverallStrengths, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.OverallConcerns, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.OverallConcerns, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.OverallConcerns, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.OverallEvaluation, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.OverallEvaluation, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.OverallEvaluation, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.OverallRating, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.OverallRating, new SelectList(ViewBag.Grades, Model.OverallRating), "Please Select", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.OverallRating, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Recommendation, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Recommendation, new SelectList(ViewBag.Recommendations, Model.Recommendation), "Please Select", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Recommendation, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-primary overlay-click" />
+            </div>
+        </div>
+    </div>
+}

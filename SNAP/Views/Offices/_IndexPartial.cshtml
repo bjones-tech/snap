@@ -1,0 +1,23 @@
+﻿@model IEnumerable<SNAP.Models.Persistent.Office>
+
+<table class="table">
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @if (item.LeaseEndDate != null)
+                {
+                    <span>Lease Ends </span>
+                    <strong>@Html.DisplayFor(modelItem => item.LeaseEndDate)</strong>
+                }
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "btn btn-info" })
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+    }
+</table>

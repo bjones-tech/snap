@@ -1,0 +1,70 @@
+﻿@model IEnumerable<SNAP.Models.Helpers.Computer>
+
+<table class="table">
+    <tr>
+        <th style="border-top: 0">Count: <span id="itemCount">@ViewBag.Count</span></th>
+    </tr>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Hostname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OperatingSystem)
+        </th>
+        <th>
+            @Html.DisplayName("Details")
+        </th>
+        <th></th>
+        <th></th>
+        <th>
+            @Html.DisplayNameFor(model => model.MaintenanceWindow)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AutoPatch)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr class="data-row">
+            <td class="hostname-data">
+                @Html.DisplayFor(modelItem => item.Hostname)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.OperatingSystem)
+            </td>
+
+            <td class="update-status-style">                
+                @if (!String.IsNullOrWhiteSpace(item.Description))
+                {
+                    <span data-toggle="tooltip" data-html="true" data-placement="right" title="@item.Description"><span class="btn-sm" style="border: solid 1px">Description</span></span>
+                }
+                else
+                {
+                    <span data-toggle="tooltip" data-html="true" data-placement="right"><span class="btn-sm" style="color: #FFF">Description</span></span>
+                }
+
+                @if (!String.IsNullOrWhiteSpace(item.ManagedBy))
+                {
+                    <span data-toggle="tooltip" data-html="true" data-placement="right" title="@item.ManagedBy"><span class="btn-sm" style="border: solid 1px">Managed By</span></span>
+                }
+            </td>
+
+            <td class="update-status"></td>
+            <td class="update-status-action"></td>
+            <td>
+                @item.MaintenanceWindow
+            </td>
+            <td>
+                @Html.CheckBoxFor(modelItem => item.AutoPatch, new { @class = "update-auto-patch-group" })
+            </td>
+        </tr>
+    }
+
+</table>
+
+@if (Request.IsAjaxRequest())
+{
+    @Scripts.Render("~/bundles/snap-softwareupdates")
+}

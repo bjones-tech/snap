@@ -1,0 +1,24 @@
+﻿@model IEnumerable<SNAP.Models.Persistent.ChangeLog>
+
+@{
+    ViewBag.Title = "Change Logs";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<hr />
+
+@using (Html.BeginForm("ChangeLogs", "Reports", FormMethod.Get))
+{
+    <div class="form-inline">
+        <div class="form-group">
+            @Html.DropDownList("ChangeLogEvent", new SelectList(ViewBag.Events), "Change Log Event", new { @class = "form-control change-submit", placeholder = "Change Log Event" })
+        </div>
+    </div>
+}
+
+<br />
+
+<div id="ajaxPartial">
+    @Html.Partial("_ChangeLogsPartial", Model)
+</div>

@@ -1,0 +1,31 @@
+﻿@model IEnumerable<SNAP.Models.Persistent.LastDay>
+
+@{
+    ViewBag.Title = "Last Day Requests";
+    ViewBag.Heading = String.Format("Submitted by {0}", User.Identity.Name);
+}
+
+<br />
+
+<h2 class="inline-element">@ViewBag.Title</h2>
+
+<span class="btn btn-default btn-sm click-submit ajax-heading" style="margin-left: 20px; margin-bottom: 10px;">Show All</span>
+
+<h4 class="ajax-heading" style="margin-top: 0">@ViewBag.Heading</h4>
+
+<hr />
+
+@using (Html.BeginForm("AllRequests", "LastDays", FormMethod.Get))
+{
+    <div class="form-inline">
+        <div class="form-group">
+            @Html.Editor("Name", new { htmlAttributes = new { @class = "form-control keyup-submit", placeholder = "Full Name" } })
+        </div>
+    </div>
+}
+
+<br />
+
+<div id="ajaxPartial">
+    @Html.Partial("_IndexPartial", Model)
+</div>

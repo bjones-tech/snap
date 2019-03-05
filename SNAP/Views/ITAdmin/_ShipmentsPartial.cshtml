@@ -1,0 +1,23 @@
+﻿@model IEnumerable<SNAP.Models.Persistent.Shipment>
+
+<table class="table">
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RecipientsName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Item)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShippedOn)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "ShipmentDetails", new { id = item.ID }, new { @class = "btn btn-info" })
+            </td>
+        </tr>
+    }
+
+</table>

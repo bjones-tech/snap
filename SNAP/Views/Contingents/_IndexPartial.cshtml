@@ -1,0 +1,21 @@
+﻿@model IEnumerable<SNAP.Models.Persistent.Contingent>
+
+<table class="table">
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                <div class="@item.StatusStyle"></div>
+            </td>
+            <td>
+                @Html.ActionLink("Update", "Edit", new { id = item.ID }, new { @class = "btn btn-info" })
+            </td>
+        </tr>
+    }
+</table>

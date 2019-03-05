@@ -1,0 +1,25 @@
+﻿@model IEnumerable<SNAP.Models.Persistent.LastDay>
+
+@{
+    ViewBag.Title = "Last Day Requests";
+}
+
+<table class="table">
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndDate)
+            </td>
+            <td>
+                @Html.ActionLink("Update", "Edit", new { id = item.ID }, new { @class = "btn btn-info" })
+                @Html.ActionLink("Cancel", "Delete", new { id = item.ID }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+    }
+
+</table>

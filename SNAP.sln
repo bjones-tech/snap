@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SNAP", "SNAP\SNAP.csproj", "{DE875255-41F0-409D-8034-2B992BF05FDC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PowerBI", "PowerBI\PowerBI.csproj", "{2C8410BD-F63F-4A98-9B61-377FDA9C9BFF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+		Test|Any CPU = Test|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DE875255-41F0-409D-8034-2B992BF05FDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE875255-41F0-409D-8034-2B992BF05FDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE875255-41F0-409D-8034-2B992BF05FDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE875255-41F0-409D-8034-2B992BF05FDC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE875255-41F0-409D-8034-2B992BF05FDC}.Test|Any CPU.ActiveCfg = Test|Any CPU
+		{DE875255-41F0-409D-8034-2B992BF05FDC}.Test|Any CPU.Build.0 = Test|Any CPU
+		{2C8410BD-F63F-4A98-9B61-377FDA9C9BFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C8410BD-F63F-4A98-9B61-377FDA9C9BFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C8410BD-F63F-4A98-9B61-377FDA9C9BFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C8410BD-F63F-4A98-9B61-377FDA9C9BFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C8410BD-F63F-4A98-9B61-377FDA9C9BFF}.Test|Any CPU.ActiveCfg = Release|Any CPU
+		{2C8410BD-F63F-4A98-9B61-377FDA9C9BFF}.Test|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

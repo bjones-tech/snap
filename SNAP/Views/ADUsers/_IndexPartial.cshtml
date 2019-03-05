@@ -1,0 +1,22 @@
+﻿@model IEnumerable<SNAP.Models.Helpers.ADUser>
+
+<table class="table">
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.GivenName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Surname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Office)
+            </td>
+            <td>
+                @Html.ActionLink("Properties", "Edit", new { guid = item.GUID }, new { @class = "btn btn-info" })
+                @Html.ActionLink("Reset Password", "ResetPassword", new { guid = item.GUID }, new { @class = "btn btn-info" })
+            </td>
+        </tr>
+    }
+</table>

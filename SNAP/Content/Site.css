@@ -1,0 +1,132 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+textarea {
+    min-width: 360px;
+    min-height: 120px;
+}
+
+/* CUSTOM CHANGES */
+
+.overlay {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(69,85,101,0.30);
+    z-index: 5;
+}
+
+.overlay-message {
+    display: none;
+    position: fixed;
+    left: 50%;
+    top: 30%;
+    background-color: #FFF;
+    border: 2px solid #6D6E70;
+    border-radius: 5px;
+    padding: 10px;
+    z-index: 10;
+}
+
+/* Navbar font color */
+.navbar-inverse .navbar-nav > li > a {
+    color: #fff;
+}
+
+/* Navbar background */
+.navbar-inverse {
+    background-color: #455565;
+}
+
+/* Navbar focused menu backgroup */
+.navbar-inverse .navbar-nav > .open > a,
+.navbar-inverse .navbar-nav > .open > a:hover,
+.navbar-inverse .navbar-nav > .open > a:focus {
+    background-color: #536679;
+}
+
+/* Navbar focused menu option background */
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+    background-color: #0784c1;
+}
+
+.navbar-right .dropdown-menu a {
+    font-size: 1.0em;
+}
+
+.dropdown-menu {
+    font-size: 0.8em;
+}
+
+.inline-element {
+    display: inline;
+}
+
+.remove-side-padding > div {
+    padding-left: 0;
+    padding-right: 2px;
+}
+
+.glyphicon-info-sign {
+    font-size: 16px;
+}
+
+.tooltip-inner {
+    max-width: 800px;
+    text-align: left;
+}
+
+.status-border-left {
+    border-left: 2px solid;
+}
+
+.large-label {
+    font-size: 24px;
+    font-weight: normal;
+}
+
+.standard-link-style {
+    color: #333;
+    text-decoration: underline;
+}
+
+.btn-dot {
+    padding: 8px;
+    border-radius: 20px;
+}
+
+.tab-right {
+    padding-right: 8px;
+}
+
+.btn-outline-danger {
+    fill: #fff;
+    border: 1px solid #CD202E;
+    border-radius: 5px;
+    color: #CD202E; 
+}

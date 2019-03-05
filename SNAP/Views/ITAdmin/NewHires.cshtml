@@ -1,0 +1,78 @@
+﻿@model IEnumerable<SNAP.Models.Persistent.NewHire>
+
+@{
+    ViewBag.Title = "New Hire Requests";
+    ViewBag.Heading = "Recent New Hire Requests";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<h4>@ViewBag.Heading</h4>
+
+<br />
+
+<table class="table table-responsive">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HireType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Office)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.O365License)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ComputerRequired)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PhoneRequired)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StartDate)
+        </th>
+        <th>
+            @Html.DisplayName("SVR Created")
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HireType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Office)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.O365License)
+            </td>
+            <td>
+                @item.ComputerRequired
+            </td>
+            <td>
+                @item.PhoneRequired
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartDate)
+            </td>
+            <td>
+                @item.ServiceRequest
+            </td>
+        </tr>
+    }
+
+</table>

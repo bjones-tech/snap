@@ -1,0 +1,167 @@
+﻿@using SNAP.Models.Helpers
+
+<ul class="nav navbar-nav">
+    <li>
+        <a href="@Url.Action("Index", "Home")">
+            <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+        </a>
+    </li>
+
+    @if (UserRole.IsEmployeeAdmin(User) || UserRole.IsContingentAdmin(User))
+    {
+        <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                Staffing
+                <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+                <li class="dropdown-header">New Hires</li>
+
+                <li>@Html.ActionLink("New Hire Requests", "Index", "NewHires")</li>
+
+                @if (UserRole.IsContingentAdmin(User))
+                {
+                    <li>@Html.ActionLink("Submit New Contingent Request", "NewContingent", "NewHires")</li>
+                }
+
+                @if (UserRole.IsEmployeeAdmin(User))
+                {
+                    <li>@Html.ActionLink("Submit New Employee Request", "NewEmployeeLookup", "NewHires")</li>
+                }
+
+                <li class="divider"></li>
+                <li class="dropdown-header">Last Days</li>
+                <li>@Html.ActionLink("Last Day Requests", "Index", "LastDays")</li>
+                <li>@Html.ActionLink("Submit Last Day Request", "LastDayLookup", "LastDays")</li>
+
+                @if (UserRole.IsContingentAdmin(User))
+                {
+                    <li class="divider"></li>
+                    <li class="dropdown-header">Contingents</li>
+                    <li>@Html.ActionLink("Contingent Search", "Index", "Contingents")</li>
+                }
+
+                @if (UserRole.IsSNAPAdmin(User))
+                {
+                    <li class="divider"></li>
+                    <li class="dropdown-header">Admin</li>
+                    <li>@Html.ActionLink("New Hire Errors", "NewHireErrors", "NewHires")</li>
+                    <li>@Html.ActionLink("Last Day Errors", "LastDayErrors", "LastDays")</li>
+                }
+            </ul>
+        </li>
+    }
+
+    @if (UserRole.IsEvalutionAdmin(User) || UserRole.IsCandidateRecruiter(User))
+    {
+        <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                Recruiting
+                <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+                <li class="dropdown-header">Candidates</li>
+                <li>@Html.ActionLink("Latest Candidates", "Index", "Evaluations")</li>
+                <li>@Html.ActionLink("Submit New Candidate", "NewCandidate", "Evaluations")</li>
+                <li class="divider"></li>
+                <li class="dropdown-header">Quick Links</li>
+                <li>@Html.ActionLink("Interview Search", "InterviewSearch", "Evaluations")</li>
+                <li>@Html.ActionLink("Unscheduled Interviews", "Unscheduled", "Evaluations")</li>
+                <li>@Html.ActionLink("Past Due Evaluations", "PastDue", "Evaluations")</li>
+                <li>@Html.ActionLink("Cancelled Reminders", "Cancelled", "Evaluations")</li>
+            </ul>
+        </li>
+    }
+
+    @if (UserRole.IsGSCUserAdmin(User))
+    {
+        <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                GSC Administration
+                <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+                <li class="dropdown-header">User Administration</li>
+                <li>@Html.ActionLink("Active Users", "Index", "GSCUsers")</li>
+                <li>@Html.ActionLink("Separated Users", "Separated", "GSCUsers")</li>
+                <li class="divider"></li>
+                <li class="dropdown-header">Client Administration</li>
+                <li>@Html.ActionLink("Clients", "Clients", "GSCUsers")</li>
+            </ul>
+        </li>
+    }
+
+    @if (UserRole.IsITAdmin(User) || UserRole.IsPasswordAdmin(User))
+    {
+        <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                IT Administration
+                <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+                <li class="dropdown-header">User Administration</li>
+                <li>@Html.ActionLink("User Search", "Index", "ADUsers")</li>
+
+                @if (UserRole.IsITAdmin(User))
+                {
+                    <li>@Html.ActionLink("New Hire Requests", "NewHires", "ITAdmin")</li>
+                    <li class="divider"></li>
+                    <li class="dropdown-header">Resource Administration</li>
+                    <li>@Html.ActionLink("Create Distribution Group", "CreateDistributionGroup", "ITAdmin")</li>
+                    <li>@Html.ActionLink("Create Contact Account", "CreateContactAccount", "ITAdmin")</li>
+                    <li class="divider"></li>
+                    <li class="dropdown-header">Shipping</li>
+                    <li>@Html.ActionLink("Shipping Logs", "Shipments", "ITAdmin")</li>
+                    <li>@Html.ActionLink("Send Shipping Notice", "SendShippingNotice", "ITAdmin")</li>
+                }
+            </ul>
+        </li>
+    }
+
+    @if (UserRole.IsFacilities(User))
+    {
+        <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                Offices
+                <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+                <li class="dropdown-header">Office Administration</li>
+                <li>@Html.ActionLink("Office Directory", "Index", "Offices")</li>
+                <li>@Html.ActionLink("Add Office", "Create", "Offices")</li>
+            </ul>
+        </li>
+    }
+
+    @if (UserRole.IsITAdmin(User))
+    {
+        <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                Monitoring
+                <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+                <li class="dropdown-header">SCCM</li>
+                <li>@Html.ActionLink("Systems BI", "SystemsBI", "Reports")</li>
+                <li>@Html.ActionLink("Windows Servers", "WindowsServersDiscovered", "Reports")</li>
+                <li>@Html.ActionLink("Windows Workstations", "WindowsWorkstations", "Reports")</li>
+                <li>@Html.ActionLink("Auto Patch Logs", "AutoPatchLogs", "Reports")</li>
+
+                <li class="divider"></li>
+                <li class="dropdown-header">Active Directory</li>
+                <li>@Html.ActionLink("Change Logs", "ChangeLogs", "Reports")</li>
+            </ul>
+        </li>
+    }
+</ul>
+
+<ul class="nav navbar-nav navbar-right">
+    <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+            <span class="glyphicon glyphicon-cog"></span>
+        </a>
+        <ul class="dropdown-menu">
+            <li class="dropdown-header">@User.Identity.Name</li>
+        </ul>
+    </li>
+</ul>

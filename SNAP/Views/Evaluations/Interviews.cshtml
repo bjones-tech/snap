@@ -1,0 +1,58 @@
+﻿@model IEnumerable<SNAP.Models.Persistent.CandidateInterview>
+
+<h2>@ViewBag.Title</h2>
+
+<br />
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Candidate.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Candidate.Number)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InterviewersName)
+        </th>
+        <th>Actions</th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink(item.Candidate.Name, "Details", new { id = item.Candidate.ID }, new { @class = "standard-link-style" })
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Candidate.Number)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InterviewersName)
+            </td>
+            <td>
+                @if (item.InterviewDate == null)
+                {
+                    @Html.ActionLink("Schedule Interview", "Schedule", new { id = item.ID }, new { @class = "btn btn-info" })<span class="tab-right"></span>
+                    @Html.ActionLink("Cancel Interview", "CancelInterview", new { id = item.ID }, new { @class = "btn btn-danger" })
+                }
+                else
+                {
+                    @Html.ActionLink("Send Reminder", "SendReminder", new { id = item.ID }, new { @class = "btn btn-warning" })<span class="tab-right"></span>
+
+                    if (item.Complete == false)
+                    {
+                        @Html.ActionLink("Disable Auto-Reminders", "CancelReminder", new { id = item.ID }, new { @class = "btn btn-danger" })
+                    }
+                    else
+                    {
+                        <div class="btn btn-outline-danger">Auto-Reminders Disabled</div>
+                    }
+                }
+            </td>
+        </tr>
+    }
+
+</table>
+

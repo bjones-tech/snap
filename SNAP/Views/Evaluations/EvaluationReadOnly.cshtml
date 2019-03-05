@@ -1,0 +1,133 @@
+﻿@model SNAP.Models.Persistent.CandidateInterview
+
+@{
+    ViewBag.Title = "Interview Evaluation";
+    ViewBag.Heading = null;
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div class="form-horizontal">
+    <h4>@ViewBag.Heading</h4>
+    <hr />
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Candidate.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Candidate.Name, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+            @Html.HiddenFor(model => model.Candidate.Name)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.InterviewersName, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.InterviewersName, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+            @Html.HiddenFor(model => model.InterviewersName)
+        </div>
+    </div>
+
+    <hr />
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.GeneralAppraisal, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.GeneralAppraisal, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+            @Html.HiddenFor(model => model.GeneralAppraisal)
+        </div>
+    </div>
+
+    <hr />
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.TechKnowledge, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.TechKnowledge, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+            @Html.HiddenFor(model => model.TechKnowledge)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.ProblemSolving, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.ProblemSolving, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+            @Html.HiddenFor(model => model.ProblemSolving)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Teamwork, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Teamwork, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+            @Html.HiddenFor(model => model.Teamwork)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Communication, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Communication, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+            @Html.HiddenFor(model => model.Communication)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.CulturalFit, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.CulturalFit, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+            @Html.HiddenFor(model => model.CulturalFit)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Leadership, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Leadership, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+            @Html.HiddenFor(model => model.Leadership)
+        </div>
+    </div>
+
+    <hr />
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.OverallStrengths, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.OverallStrengths, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+            @Html.HiddenFor(model => model.OverallStrengths)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.OverallConcerns, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.OverallConcerns, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+            @Html.HiddenFor(model => model.OverallConcerns)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.OverallEvaluation, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.OverallEvaluation, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+            @Html.HiddenFor(model => model.OverallEvaluation)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.OverallRating, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.OverallRating, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+            @Html.HiddenFor(model => model.OverallRating)
+        </div>
+    </div>
+
+    <hr />
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Recommendation, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Recommendation, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+            @Html.HiddenFor(model => model.Recommendation)
+        </div>
+    </div>
+</div>

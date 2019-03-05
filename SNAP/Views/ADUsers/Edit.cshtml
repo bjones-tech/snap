@@ -1,0 +1,125 @@
+﻿@model SNAP.Models.Helpers.ADUser
+@using SNAP.Models.Helpers
+
+@{
+    ViewBag.Title = "User Account Properties";
+    ViewBag.Heading = Model.DisplayName;
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.GUID)
+    @Html.HiddenFor(model => model.LockedOut)
+
+    <div class="form-horizontal">
+        <h4>@ViewBag.Heading</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.ValidationMessage("AccountUpdate", "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EmailAddress, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.EmailAddress, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                @Html.HiddenFor(model => model.EmailAddress)
+                @Html.ValidationMessageFor(model => model.EmailAddress, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                @Html.HiddenFor(model => model.Title)
+                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Department, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Department, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                @Html.HiddenFor(model => model.Department)
+                @Html.ValidationMessageFor(model => model.Department, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Office, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Office, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                @Html.HiddenFor(model => model.Office)
+                @Html.ValidationMessageFor(model => model.Office, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EmployeeType, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.EmployeeType, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                @Html.HiddenFor(model => model.EmployeeType)
+                @Html.ValidationMessageFor(model => model.EmployeeType, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.O365License, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.O365License, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                @Html.HiddenFor(model => model.O365License)
+                @Html.ValidationMessageFor(model => model.O365License, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @if (Model.LockedOut == true)
+        {
+            <hr />
+
+            <div class="form-group">
+                @Html.Label("Account Locked", htmlAttributes: new { @class = "control-label col-md-2 text-danger" })
+                <div class="col-md-10">
+                    @Html.ActionLink("Unlock Account", "UnlockAccount", new { guid = Model.GUID }, new { @class = "btn btn-default" })
+                </div>
+            </div>
+        }
+
+        <hr />
+
+        @if (Model.AccountExpirationDate != null)
+        {
+            <div class="form-group">
+                @Html.LabelFor(model => model.AccountExpirationDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <div class="input-group">
+                        @DatePicker.Label("AccountExpirationDate")
+                        @Html.TextBoxFor(model => model.AccountExpirationDate, "{0:MMMM dd, yyyy}", new { @class = "form-control end-date-picker" })
+                    </div>
+                    @Html.ValidationMessageFor(model => model.AccountExpirationDate, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Update" class="btn btn-primary overlay-click" />
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="form-group">
+                @Html.LabelFor(model => model.AccountExpirationDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBox("AccountExpirationDate", "Never", new { @class = "form-control", disabled = "disabled" })
+                    @Html.HiddenFor(model => model.AccountExpirationDate)
+                </div>
+            </div>
+        }
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/snap-aduser")
+}

@@ -1,0 +1,61 @@
+﻿@model List<string>
+
+@{
+    ViewBag.Title = "New Employee Lookup";
+    ViewBag.Heading = null;
+
+    bool isChecked = true;
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>@ViewBag.Heading</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.Label("Worker ID", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.Editor("WorkerID", new { htmlAttributes = new { @class = "form-control inline-element" } })
+                <span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-html="true" data-placement="right" title="@ViewBag.WorkerIDHelp"></span><br />
+                @Html.ValidationMessage("WorkerID", "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="form-group">
+            @Html.Label("Hire Type", htmlAttributes: new { @class = "control-label col-md-2 large-label" })
+            <div class="col-md-10">                
+                <span class="glyphicon glyphicon-info-sign" style="padding-top: 14px" data-toggle="tooltip" data-html="true" data-placement="right" title="@ViewBag.HireTypeGuidelines"></span>
+            </div>
+        </div>
+
+        @foreach (var item in Model)
+        {
+            <div class="form-group">
+                @Html.Label(item, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <div class="radio">
+                        @Html.RadioButton("HireType", item, isChecked, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                </div>
+            </div>
+
+            isChecked = false;
+        }
+
+        <hr />
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Next" class="btn btn-primary overlay-click" />
+            </div>
+        </div>
+    </div>
+}

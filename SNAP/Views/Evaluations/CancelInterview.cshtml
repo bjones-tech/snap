@@ -1,0 +1,49 @@
+﻿@model SNAP.Models.Persistent.CandidateInterview
+
+@{
+    ViewBag.Title = "Cancel Interview";
+}
+
+<h2>Cancel Interview</h2>
+
+<h3>Are you sure you want to cancel this interview?</h3>
+<div>
+    <h4>Interview Details</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Candidate.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Candidate.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InterviewersName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InterviewersName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Candidate.Number)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Candidate.Number)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Unscheduled")
+        </div>
+    }
+</div>

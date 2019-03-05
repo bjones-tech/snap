@@ -1,0 +1,78 @@
+﻿@model SNAP.Models.Persistent.GSCUser
+
+@{                         
+    Layout = "_MailLayoutExternal.cshtml";
+    ViewBag.Heading = "Dimension Data";
+    ViewBag.SubHeading = "Resource Notification";
+}
+
+<tr>
+    <td align="center" valign="top">
+        <table border="0" cellpadding="0" cellspacing="0" width="600" id="templateBody">
+            <tr>
+                <td valign="top">
+                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                        <tr>
+                            <td valign="top" class="bodyContent">
+                                <div mc:edit="std_content00">
+                                    <br />The following Dimension Data resource is being separated from @Model.GSCClient.Name
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </td>
+</tr>
+
+<tr>
+    <td align="center" valign="top">
+        <table border="0" cellpadding="0" cellspacing="0" width="600" id="templateBody">
+            <tr>
+                <td valign="top">
+                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                        <tr>
+                            <td valign="top" style="padding-top:20px; padding-bottom:20px;">
+                                <table border="0" cellpadding="10" cellspacing="0" width="100%" class="templateDataTable">
+                                    <tr>
+                                        <th scope="col" valign="top" width="25%" class="dataTableHeading" mc:edit="data_table_heading00">
+                                            @Html.DisplayNameFor(model => model.Name)
+                                        </th>
+                                        <td valign="top" class="dataTableContent" mc:edit="data_table_content01">
+                                            @Model.Name
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="col" valign="top" width="25%" class="dataTableHeading" mc:edit="data_table_heading00">
+                                            @Html.DisplayNameFor(model => model.EmailAddress)
+                                        </th>
+                                        <td valign="top" class="dataTableContent" mc:edit="data_table_content01">
+                                            @Model.EmailAddress
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="col" valign="top" width="25%" class="dataTableHeading" mc:edit="data_table_heading00">
+                                            @Html.DisplayNameFor(model => model.Title)
+                                        </th>
+                                        <td valign="top" class="dataTableContent" mc:edit="data_table_content01">
+                                            @Model.Title
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="col" valign="top" width="25%" class="dataTableHeading" mc:edit="data_table_heading00">
+                                            @Html.DisplayNameFor(model => model.EndDate)
+                                        </th>
+                                        <td valign="top" class="dataTableContent" mc:edit="data_table_content01">
+                                            @Model.EndDate.Value.ToString("MMMM dd, yyyy")
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </td>
+</tr>

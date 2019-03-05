@@ -1,0 +1,150 @@
+﻿@model SNAP.Models.Mail.AccountDetails
+
+@{
+    Layout = "_MailLayout.cshtml";
+    ViewBag.Banner = "cid:AIS_Banner";
+    ViewBag.Heading = null;
+
+    ViewBag.WebmailURL = "https://webmail.us.didata.com";
+    ViewBag.GettingHelpURL = "https://dimensiondata.sharepoint.com/teams/0cqqw";
+    ViewBag.PasswordManagementURL = "https://dimensiondata.sharepoint.com/teams/0cqqw/SitePages/Password-Management.aspx";
+    ViewBag.ServiceDeskURL = "https://quickit.dimensiondata.com/";
+}
+
+<tr>
+    <td align="center" valign="top">
+        <table border="0" cellpadding="0" cellspacing="0" width="600" id="templateBody">
+            <tr>
+                <td valign="top">
+                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                        <tr>
+                            <td valign="top" class="bodyContent">
+                                <div mc:edit="std_content00">
+                                    <br />
+                                    <span>Please provide the following information to <span>@Model.Name.</span></span>
+                                </div>
+                                <div mc:edit="std_content00">
+                                    <br />
+                                    <strong>Account Details</strong>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </td>
+</tr>
+<tr>
+    <td align="center" valign="top">
+        <table border="0" cellpadding="0" cellspacing="0" width="600" id="templateBody">
+            <tr>
+                <td valign="top">
+                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                        <tr>
+                            <td valign="top" style="padding-top:20px; padding-bottom:20px;">
+                                <table border="0" cellpadding="10" cellspacing="0" width="100%" class="templateDataTable">
+                                    <tr>
+                                        <th scope="col" valign="top" width="30%" class="dataTableHeading" mc:edit="data_table_heading00">
+                                            @Html.DisplayNameFor(model => model.EmailAddress)
+                                        </th>
+                                        <td valign="top" class="dataTableContent" mc:edit="data_table_content01">
+                                            @Model.EmailAddress
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="col" valign="top" width="30%" class="dataTableHeading" mc:edit="data_table_heading00">
+                                            @Html.DisplayNameFor(model => model.LogonName)
+                                        </th>
+                                        <td valign="top" class="dataTableContent" mc:edit="data_table_content01">
+                                            @Model.LogonName
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="col" valign="top" width="30%" class="dataTableHeading" mc:edit="data_table_heading00">
+                                            @Html.DisplayNameFor(model => model.Password)
+                                        </th>
+                                        <td valign="top" class="dataTableContent" mc:edit="data_table_content01">
+                                            <em>Provided in a separate email</em>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="col" valign="top" width="30%" class="dataTableHeading" mc:edit="data_table_heading00">
+                                            WEBMAIL
+                                        </th>
+                                        <td valign="top" class="dataTableContent" mc:edit="data_table_content01">
+                                            <a href="@ViewBag.WebmailURL">Click Here</a>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </td>
+</tr>
+
+<tr>
+    <td align="center" valign="top">
+        <table border="0" cellpadding="0" cellspacing="0" width="600" id="templateBody">
+            <tr>
+                <td valign="top">
+                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                        <tr>
+                            <td valign="top" class="bodyContent">
+                                <div mc:edit="std_content00">
+                                    <br />
+                                    <strong>Useful Resources</strong>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </td>
+</tr>
+<tr>
+    <td align="center" valign="top">
+        <table border="0" cellpadding="0" cellspacing="0" width="600" id="templateBody">
+            <tr>
+                <td valign="top">
+                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                        <tr>
+                            <td valign="top" style="padding-top:20px; padding-bottom:20px;">
+                                <table border="0" cellpadding="10" cellspacing="0" width="100%" class="templateDataTable">
+                                    <tr>
+                                        <th scope="col" valign="top" width="45%" class="dataTableHeading" mc:edit="data_table_heading00">
+                                            PASSWORD MANAGEMENT
+                                        </th>
+                                        <td valign="top" class="dataTableContent" mc:edit="data_table_content01">
+                                            <a href="@ViewBag.PasswordManagementURL">Password Management Page</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="col" valign="top" width="45%" class="dataTableHeading" mc:edit="data_table_heading00">
+                                            HELP & SUPPORT
+                                        </th>
+                                        <td valign="top" class="dataTableContent" mc:edit="data_table_content01">
+                                            <a href="@ViewBag.GettingHelpURL">Americas Support</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="col" valign="top" width="45%" class="dataTableHeading" mc:edit="data_table_heading00">
+                                            SERVICE DESK
+                                        </th>
+                                        <td valign="top" class="dataTableContent" mc:edit="data_table_content01">
+                                            <a href="@ViewBag.ServiceDeskURL">QuickIT</a>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </td>
+</tr>

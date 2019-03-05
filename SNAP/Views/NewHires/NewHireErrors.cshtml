@@ -1,0 +1,53 @@
+﻿@model IEnumerable<SNAP.Models.Persistent.NewHire>
+
+@{
+    ViewBag.Title = "New Hire Errors";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HireType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WorkerType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StartDate)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HireType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WorkerType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartDate)
+            </td>
+            <td>
+                @Html.ActionLink("Fix", "NewHireFix", new { id = item.ID }, new { @class = "btn btn-info" })
+            </td>
+        </tr>
+    }
+
+</table>

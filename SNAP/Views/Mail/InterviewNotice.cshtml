@@ -1,0 +1,180 @@
+﻿@model SNAP.Models.Mail.InterviewNotice
+@using System.Configuration
+
+@{
+    Layout = "_MailLayout.cshtml";
+    ViewBag.Banner = "cid:AIS_Banner";
+    ViewBag.Heading = Model.Heading;
+
+    ViewBag.EvaluationURL = String.Format(@"{0}/Evaluations/Evaluation/{1}", ConfigurationManager.AppSettings["SNAP_WEB_URI"], Model.InterviewID);
+    ViewBag.CandidateDetailsURL = String.Format(@"{0}/Evaluations/Details/{1}", ConfigurationManager.AppSettings["SNAP_WEB_URI"], Model.CandidateID);
+}
+
+@if (Model.NoticeType.Contains("MeetingRequest"))
+{
+    <tr>
+        <td align="center" valign="top">
+            <table border="0" cellpadding="0" cellspacing="0" width="600" id="templateBody">
+                <tr>
+                    <td valign="top">
+                        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                            <tr>
+                                <td valign="top" class="bodyContent">
+                                    <div mc:edit="std_content00">
+                                        <br />
+                                        <strong>Step 1:</strong> Find the meeting request in your calendar.
+                                    </div>
+                                    <div mc:edit="std_content00">
+                                        <br />
+                                        <strong>Step 2:</strong> Add any required attendees to the meeting request.
+                                    </div>
+                                    <div mc:edit="std_content00">
+                                        <br />
+                                        <strong>Step 3:</strong> Use meeting request scheduling assistant to set a date and time.
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+}
+
+@if (Model.NoticeType.Contains("Evaluation"))
+{
+    <tr>
+        <td align="center" valign="top">
+            <table border="0" cellpadding="0" cellspacing="0" width="600" id="templateBody">
+                <tr>
+                    <td valign="top">
+                        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                            <tr>
+                                <td valign="top" class="bodyContent">
+                                    <div mc:edit="std_content00">
+                                        <br />
+                                        <strong>Evaluation must be submitted upon completion of the interview.</strong>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+}
+
+@if (Model.NoticeType.Contains("PastDue"))
+{
+    <tr>
+        <td align="center" valign="top">
+            <table border="0" cellpadding="0" cellspacing="0" width="600" id="templateBody">
+                <tr>
+                    <td valign="top">
+                        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                            <tr>
+                                <td valign="top" class="bodyContent">
+                                    <div mc:edit="std_content00">
+                                        <br />
+                                        <strong>Evaluation must be submitted as soon as possible.</strong>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+}
+
+<tr>
+    <td align="center" valign="top">
+        <table border="0" cellpadding="0" cellspacing="0" width="600" id="templateBody">
+            <tr>
+                <td valign="top">
+                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                        <tr>
+                            <td valign="top" style="padding-top:20px; padding-bottom:20px;">
+                                <table border="0" cellpadding="10" cellspacing="0" width="100%" class="templateDataTable">
+                                    <tr>
+                                        <th scope="col" valign="top" width="25%" class="dataTableHeading" mc:edit="data_table_heading00">
+                                            @Html.DisplayNameFor(model => model.Candidate)
+                                        </th>
+                                        <td valign="top" class="dataTableContent" mc:edit="data_table_content01">
+                                            @Model.Candidate
+                                        </td>
+                                    </tr>
+
+                                    @if (Model.NoticeType.Contains("MeetingRequest"))
+                                    {
+                                        <tr>
+                                            <th scope="col" valign="top" width="25%" class="dataTableHeading" mc:edit="data_table_heading00">
+                                                @Html.DisplayNameFor(model => model.InterviewDate)
+                                            </th>
+                                            <td valign="top" class="dataTableContent" mc:edit="data_table_content01">
+                                                @Model.InterviewDate
+                                            </td>
+                                        </tr>
+                                    }
+
+                                    @if (Model.NoticeType.Contains("Evaluation"))
+                                    {
+                                        <tr>
+                                            <th scope="col" valign="top" width="25%" class="dataTableHeading" mc:edit="data_table_heading00">
+                                                @Html.DisplayNameFor(model => model.Organizer)
+                                            </th>
+                                            <td valign="top" class="dataTableContent" mc:edit="data_table_content01">
+                                                @Model.Organizer
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="col" valign="top" width="25%" class="dataTableHeading" mc:edit="data_table_heading00">
+                                                @Html.DisplayNameFor(model => model.InterviewDate)
+                                            </th>
+                                            <td valign="top" class="dataTableContent" mc:edit="data_table_content01">
+                                                <em>Organizer will be scheduling the interview</em>
+                                            </td>
+                                        </tr>
+                                    }
+
+                                    @if (Model.NoticeType.Contains("Evaluation") || Model.NoticeType.Contains("PastDue"))
+                                    {
+                                        <tr>
+                                            <th scope="col" valign="top" width="45%" class="dataTableHeading" mc:edit="data_table_heading00">
+                                                EVALUATION FORM
+                                            </th>
+                                            @*Network Requirement*@
+                                            <td valign="top" class="dataTableContent" mc:edit="data_table_content01">
+                                                <a href="@ViewBag.CandidateDetailsURL">Click here for details</a>
+                                                <br />
+                                                <small>*Requires connection to Dimension Data Americas network</small>
+                                            </td>
+                                        </tr>
+                                    }
+
+                                    @if (Model.NoticeType.Contains("Complete"))
+                                    {
+                                        <tr>
+                                            <th scope="col" valign="top" width="45%" class="dataTableHeading" mc:edit="data_table_heading00">
+                                                CANDIDATE DETAILS
+                                            </th>
+                                            @*Network Requirement*@
+                                            <td valign="top" class="dataTableContent" mc:edit="data_table_content01">
+                                                <a href="@ViewBag.CandidateDetailsURL">Click Here</a>
+                                                <br />
+                                                <small>*Requires connection to Dimension Data Americas network</small>
+                                            </td>
+                                        </tr>
+                                    }
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </td>
+</tr>

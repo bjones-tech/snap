@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "Auto Patch Logs";
+    string actions = ViewBag.Actions;
+    string alerts = ViewBag.Alerts;
+}
+
+<h2>@ViewBag.Title</h2>
+
+<br />
+
+<table class="table">
+    <tr><td style="font-size: large"><strong>Alerts</strong></td><td></td><td></td></tr>
+    @Html.Raw(alerts)
+
+    <tr><td style="font-size: large"><strong>Actions</strong></td><td></td><td></td></tr>
+    @Html.Raw(actions)
+</table>
+
+<script>
+    setTimeout(function () {
+        window.location.reload(true);
+    }, 60000);
+</script>

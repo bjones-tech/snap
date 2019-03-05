@@ -1,0 +1,71 @@
+﻿@model IEnumerable<SNAP.Models.Helpers.Computer>
+
+@{
+    ViewBag.Title = "Windows Servers";
+    ViewBag.Heading = "Discovered in SCCM";
+}
+
+<br />
+
+<h2 class="inline-element">@ViewBag.Title</h2>
+
+@Html.ActionLink("Show Undiscovered Servers", "WindowsServersUndiscovered", null, new { @class = "btn btn-default btn-sm", @style = "margin-left: 20px; margin-bottom: 10px;" })
+
+<h4>@ViewBag.Heading</h4>
+
+<hr />
+
+@using (Html.BeginForm("WindowsServersDiscovered", "Reports", FormMethod.Get))
+{
+    <div class="form-inline">
+        <div class="form-group">
+            @Html.Editor("Hostname", new { htmlAttributes = new { @class = "form-control", placeholder = "Hostname" } })
+        </div>
+        <div class="form-group">
+            @Html.Editor("Description", new { htmlAttributes = new { @class = "form-control", placeholder = "Description" } })
+        </div>
+    </div>
+
+    <br />
+
+    <div class="form-inline">
+        <div class="form-group">
+            @Html.DropDownList("ManagedBy", new SelectList(ViewBag.ManagedBy), "Managed By", new { @class = "form-control", placeholder = "Managed By" })
+        </div>
+        <div class="form-group">
+            @Html.DropDownList("MaintenanceWindow", new SelectList(ViewBag.MaintenanceWindows), "Maintenance Window", new { @class = "form-control", placeholder = "Maintenance Window" })
+        </div>
+        <div class="form-group">
+            @Html.DropDownList("PatchMethod", new SelectList(ViewBag.PatchMethod), "Patch Method", new { @class = "form-control", placeholder = "Patch Method" })
+        </div>
+    </div>
+
+    <br />
+
+    <div class="form-inline">
+        <div class="form-group">
+            <button type="button" class="btn btn-primary click-submit">Filter</button>
+        </div>
+        <div class="form-group">
+            @Html.ActionLink("Reset", "WindowsServersDiscovered", null, new { @class = "btn btn-default" })
+        </div>
+        <div class="form-group">
+            <div class="btn btn-default check-software-updates">Check Software Updates</div>
+        </div>
+        <div class="form-group">
+            <div class="btn btn-default remove-compliant disabled hidden">Remove Compliant Servers</div>
+        </div>
+    </div>
+
+    <br />
+}
+
+<br />
+
+<div id="ajaxPartial">
+    @Html.Partial("_WindowsServersPartial", Model)
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/snap-softwareupdates")
+}

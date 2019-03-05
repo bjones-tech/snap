@@ -1,0 +1,84 @@
+﻿@model SNAP.Models.Persistent.Shipment
+@using SNAP.Models.Helpers
+
+@{
+    ViewBag.Title = "Shipment Details";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div class="form-horizontal">
+
+    <h4>@ViewBag.Heading</h4>
+    <hr />
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.RecipientsName, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.RecipientsName, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+            @Html.HiddenFor(model => model.RecipientsName)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.ManagersName, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.ManagersName, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+            @Html.HiddenFor(model => model.ManagersName)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.ShippersName, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.ShippersName, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+            @Html.HiddenFor(model => model.ShippersName)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.ShippedOn, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <div class="input-group">
+                @DatePicker.Label("ShippedOn")
+                @Html.TextBoxFor(model => model.ShippedOn, "{0:MMMM dd, yyyy}", new { @class = "form-control", disabled = "disabled" })
+            </div>
+            @Html.HiddenFor(model => model.ShippedOn)
+        </div>
+    </div>
+
+    <hr />
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Item, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Item, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+            @Html.HiddenFor(model => model.Item)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.TrackingNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.TrackingNumber, new { htmlAttributes = new { @class = "form-control inline-element", disabled = "disabled" } })
+            @Html.HiddenFor(model => model.TrackingNumber)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.Label("Track Package", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <a href="@Model.TrackingURL" class="btn btn-default btn-sm">Click Here</a>
+        </div>
+    </div>
+
+    <hr />
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Notes, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Notes, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+            @Html.HiddenFor(model => model.Notes)
+        </div>
+    </div>
+</div>

@@ -1,0 +1,25 @@
+﻿@model SNAP.Models.Persistent.GSCUser
+
+@{
+    ViewBag.Title = "Delete User";
+}
+
+<h3>Are you sure you want to remove this user?</h3>
+
+<div>
+    <h4>@ViewBag.Heading</h4>
+    <hr />
+
+    <ul class="list-group">
+        <li class="list-group-item"><strong>@Html.DisplayFor(model => model.EmailAddress)</strong> to be removed from <strong>@Html.DisplayFor(model => model.GSCClient.Name)</strong></li>
+        <li class="list-group-item text-danger">Email notification will be sent to <strong>@Model.GSCClient.EmailAddress</strong></li>
+    </ul>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Remove" class="btn btn-danger" />
+        </div>
+    }
+</div>

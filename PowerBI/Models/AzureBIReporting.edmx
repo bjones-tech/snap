@@ -1,0 +1,405 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="AzureBIReporting.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="LenelAttendance">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="LenelPanelID" Type="int" Nullable="false" />
+          <Property Name="UserCount" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NetworkActivity">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="OfficeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserCount" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Offices">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="StreetAddress" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="State" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PostalCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Country" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CountryISO2" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CountryISO3" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LenelPanelID" Type="int" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" />
+          <Property Name="Landlord" Type="nvarchar(max)" />
+          <Property Name="SecDeposit" Type="float" />
+          <Property Name="Seating" Type="int" />
+          <Property Name="LeaseStartDate" Type="datetime" />
+          <Property Name="LeaseEndDate" Type="datetime" />
+          <Property Name="MonthlyRent" Type="float" />
+          <Property Name="SquareFootage" Type="float" />
+          <Property Name="RentPerSqFoot" Type="float" />
+          <Property Name="Region" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="SCCMWindowsServers">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Hostname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="OperatingSystem" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Manufacturer" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Model" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="SerialNumber" Type="nvarchar(max)" />
+          <Property Name="AVVersion" Type="nvarchar" MaxLength="50" />
+          <Property Name="AVSignatureVersion" Type="nvarchar" MaxLength="50" />
+          <Property Name="AVSignatureUpdate" Type="datetime" />
+          <Property Name="AVLastScan" Type="datetime" />
+          <Property Name="AVInfectionStatus" Type="nvarchar" MaxLength="50" />
+          <Property Name="SoftwareUpdateStatus" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SoftwareUpdateStatusBasic" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastBootUpTime" Type="datetime" />
+          <Property Name="MaintenanceGroup" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MaintenanceWindow" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Environment" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SCCMWindowsWorkstations">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Hostname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserGUID" Type="nvarchar(max)" />
+          <Property Name="OperatingSystem" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Manufacturer" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Model" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="SerialNumber" Type="nvarchar(max)" />
+          <Property Name="AVVersion" Type="nvarchar" MaxLength="50" />
+          <Property Name="AVSignatureVersion" Type="nvarchar" MaxLength="50" />
+          <Property Name="AVSignatureUpdate" Type="datetime" />
+          <Property Name="AVLastScan" Type="datetime" />
+          <Property Name="AVInfectionStatus" Type="nvarchar" MaxLength="50" />
+          <Property Name="Environment" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="EmailAddress" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="GUID" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="SID" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="WorkdayID" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmployeeType" Type="nvarchar" MaxLength="50" />
+          <Property Name="Country" Type="nvarchar" MaxLength="50" />
+          <Property Name="Area" Type="nvarchar" MaxLength="50" />
+          <Property Name="Office" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Department" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" />
+          <Property Name="ManagersName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ManagersEmail" Type="nvarchar(max)" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="50" />
+          <Property Name="Race" Type="nvarchar(max)" />
+          <Property Name="Age" Type="int" />
+          <Property Name="AgeRange" Type="nvarchar" MaxLength="50" />
+          <Property Name="YOS" Type="int" />
+          <Property Name="YOSRange" Type="nvarchar" MaxLength="50" />
+          <Property Name="State" Type="nvarchar(max)" />
+          <Property Name="HireDate" Type="datetime" />
+          <Property Name="LeadershipForum" Type="bit" />
+          <Property Name="Technical" Type="bit" />
+        </EntityType>
+        <EntityContainer Name="AzureBIReportingStoreContainer">
+          <EntitySet Name="LenelAttendance" EntityType="Self.LenelAttendance" Schema="ais" store:Type="Tables" />
+          <EntitySet Name="NetworkActivity" EntityType="Self.NetworkActivity" Schema="ais" store:Type="Tables" />
+          <EntitySet Name="Offices" EntityType="Self.Offices" Schema="ais" store:Type="Tables" />
+          <EntitySet Name="SCCMWindowsServers" EntityType="Self.SCCMWindowsServers" Schema="ais" store:Type="Tables" />
+          <EntitySet Name="SCCMWindowsWorkstations" EntityType="Self.SCCMWindowsWorkstations" Schema="ais" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="ais" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AzureBIReporting" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Office">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="StreetAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PostalCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CountryISO2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CountryISO3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LenelPanelID" Type="Int32" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Landlord" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecDeposit" Type="Double" />
+          <Property Name="Seating" Type="Int32" />
+          <Property Name="LeaseStartDate" Type="DateTime" Precision="3" />
+          <Property Name="LeaseEndDate" Type="DateTime" Precision="3" />
+          <Property Name="MonthlyRent" Type="Double" />
+          <Property Name="SquareFootage" Type="Double" />
+          <Property Name="RentPerSqFoot" Type="Double" />
+          <Property Name="Region" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="AzureBIReportingContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Offices" EntityType="Self.Office" />
+          <EntitySet Name="LenelAttendance" EntityType="AzureBIReporting.LenelAttendance" />
+          <EntitySet Name="NetworkActivity" EntityType="AzureBIReporting.NetworkActivity" />
+          <EntitySet Name="SCCMWindowsServers" EntityType="AzureBIReporting.SCCMWindowsServer" />
+          <EntitySet Name="SCCMWindowsWorkstations" EntityType="AzureBIReporting.SCCMWindowsWorkstation" />
+          <EntitySet Name="Users" EntityType="AzureBIReporting.User" />
+        </EntityContainer>
+        <EntityType Name="LenelAttendance">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LenelPanelID" Type="Int32" Nullable="false" />
+          <Property Name="UserCount" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NetworkActivity">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="OfficeName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserCount" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SCCMWindowsServer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Hostname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OperatingSystem" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Manufacturer" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Model" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SerialNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AVVersion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AVSignatureVersion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AVSignatureUpdate" Type="DateTime" Precision="3" />
+          <Property Name="AVLastScan" Type="DateTime" Precision="3" />
+          <Property Name="AVInfectionStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SoftwareUpdateStatus" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SoftwareUpdateStatusBasic" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastBootUpTime" Type="DateTime" Precision="3" />
+          <Property Name="MaintenanceGroup" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MaintenanceWindow" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Environment" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="SCCMWindowsWorkstation">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Hostname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserGUID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OperatingSystem" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Manufacturer" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Model" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SerialNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AVVersion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AVSignatureVersion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AVSignatureUpdate" Type="DateTime" Precision="3" />
+          <Property Name="AVLastScan" Type="DateTime" Precision="3" />
+          <Property Name="AVInfectionStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Environment" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmailAddress" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="GUID" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SID" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="WorkdayID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmployeeType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Area" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Office" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Department" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ManagersName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ManagersEmail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Race" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Age" Type="Int32" />
+          <Property Name="AgeRange" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="YOS" Type="Int32" />
+          <Property Name="YOSRange" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HireDate" Type="DateTime" Precision="3" />
+          <Property Name="LeadershipForum" Type="Boolean" />
+          <Property Name="Technical" Type="Boolean" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AzureBIReportingStoreContainer" CdmEntityContainer="AzureBIReportingContext">
+          <EntitySetMapping Name="Offices">
+            <EntityTypeMapping TypeName="AzureBIReporting.Office">
+              <MappingFragment StoreEntitySet="Offices">
+                <ScalarProperty Name="Region" ColumnName="Region" />
+                <ScalarProperty Name="RentPerSqFoot" ColumnName="RentPerSqFoot" />
+                <ScalarProperty Name="SquareFootage" ColumnName="SquareFootage" />
+                <ScalarProperty Name="MonthlyRent" ColumnName="MonthlyRent" />
+                <ScalarProperty Name="LeaseEndDate" ColumnName="LeaseEndDate" />
+                <ScalarProperty Name="LeaseStartDate" ColumnName="LeaseStartDate" />
+                <ScalarProperty Name="Seating" ColumnName="Seating" />
+                <ScalarProperty Name="SecDeposit" ColumnName="SecDeposit" />
+                <ScalarProperty Name="Landlord" ColumnName="Landlord" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="StreetAddress" ColumnName="StreetAddress" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="CountryISO2" ColumnName="CountryISO2" />
+                <ScalarProperty Name="CountryISO3" ColumnName="CountryISO3" />
+                <ScalarProperty Name="LenelPanelID" ColumnName="LenelPanelID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LenelAttendance">
+            <EntityTypeMapping TypeName="AzureBIReporting.LenelAttendance">
+              <MappingFragment StoreEntitySet="LenelAttendance">
+                <ScalarProperty Name="UserCount" ColumnName="UserCount" />
+                <ScalarProperty Name="LenelPanelID" ColumnName="LenelPanelID" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NetworkActivity">
+            <EntityTypeMapping TypeName="AzureBIReporting.NetworkActivity">
+              <MappingFragment StoreEntitySet="NetworkActivity">
+                <ScalarProperty Name="UserCount" ColumnName="UserCount" />
+                <ScalarProperty Name="OfficeName" ColumnName="OfficeName" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SCCMWindowsServers">
+            <EntityTypeMapping TypeName="AzureBIReporting.SCCMWindowsServer">
+              <MappingFragment StoreEntitySet="SCCMWindowsServers">
+                <ScalarProperty Name="Environment" ColumnName="Environment" />
+                <ScalarProperty Name="MaintenanceWindow" ColumnName="MaintenanceWindow" />
+                <ScalarProperty Name="MaintenanceGroup" ColumnName="MaintenanceGroup" />
+                <ScalarProperty Name="LastBootUpTime" ColumnName="LastBootUpTime" />
+                <ScalarProperty Name="SoftwareUpdateStatusBasic" ColumnName="SoftwareUpdateStatusBasic" />
+                <ScalarProperty Name="SoftwareUpdateStatus" ColumnName="SoftwareUpdateStatus" />
+                <ScalarProperty Name="AVInfectionStatus" ColumnName="AVInfectionStatus" />
+                <ScalarProperty Name="AVLastScan" ColumnName="AVLastScan" />
+                <ScalarProperty Name="AVSignatureUpdate" ColumnName="AVSignatureUpdate" />
+                <ScalarProperty Name="AVSignatureVersion" ColumnName="AVSignatureVersion" />
+                <ScalarProperty Name="AVVersion" ColumnName="AVVersion" />
+                <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="Manufacturer" ColumnName="Manufacturer" />
+                <ScalarProperty Name="OperatingSystem" ColumnName="OperatingSystem" />
+                <ScalarProperty Name="Hostname" ColumnName="Hostname" />
+                <ScalarProperty Name="SID" ColumnName="SID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SCCMWindowsWorkstations">
+            <EntityTypeMapping TypeName="AzureBIReporting.SCCMWindowsWorkstation">
+              <MappingFragment StoreEntitySet="SCCMWindowsWorkstations">
+                <ScalarProperty Name="Environment" ColumnName="Environment" />
+                <ScalarProperty Name="AVInfectionStatus" ColumnName="AVInfectionStatus" />
+                <ScalarProperty Name="AVLastScan" ColumnName="AVLastScan" />
+                <ScalarProperty Name="AVSignatureUpdate" ColumnName="AVSignatureUpdate" />
+                <ScalarProperty Name="AVSignatureVersion" ColumnName="AVSignatureVersion" />
+                <ScalarProperty Name="AVVersion" ColumnName="AVVersion" />
+                <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="Manufacturer" ColumnName="Manufacturer" />
+                <ScalarProperty Name="OperatingSystem" ColumnName="OperatingSystem" />
+                <ScalarProperty Name="UserGUID" ColumnName="UserGUID" />
+                <ScalarProperty Name="Hostname" ColumnName="Hostname" />
+                <ScalarProperty Name="SID" ColumnName="SID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="AzureBIReporting.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Technical" ColumnName="Technical" />
+                <ScalarProperty Name="LeadershipForum" ColumnName="LeadershipForum" />
+                <ScalarProperty Name="HireDate" ColumnName="HireDate" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="YOSRange" ColumnName="YOSRange" />
+                <ScalarProperty Name="YOS" ColumnName="YOS" />
+                <ScalarProperty Name="AgeRange" ColumnName="AgeRange" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="Race" ColumnName="Race" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="ManagersEmail" ColumnName="ManagersEmail" />
+                <ScalarProperty Name="ManagersName" ColumnName="ManagersName" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="Office" ColumnName="Office" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="EmployeeType" ColumnName="EmployeeType" />
+                <ScalarProperty Name="WorkdayID" ColumnName="WorkdayID" />
+                <ScalarProperty Name="SID" ColumnName="SID" />
+                <ScalarProperty Name="GUID" ColumnName="GUID" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
